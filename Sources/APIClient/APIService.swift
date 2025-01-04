@@ -5,7 +5,7 @@
 import Foundation
 import Combine
 
-class APIService{
+public class APIService{
     
     public init() { }
     
