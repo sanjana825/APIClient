@@ -11,7 +11,7 @@ class APIService{
     
     @available(macOS 10.15, *)
     @available(iOS 13.0, *)
-    func sendRequests<T: Decodable>(url: String, method: HTTPMethod, decodingType: T.Type) -> AnyPublisher<T, NetworkError> {
+    public func sendRequests<T: Decodable>(url: String, method: HTTPMethod, decodingType: T.Type) -> AnyPublisher<T, NetworkError> {
         guard let url = URL(string: url) else {
                 return Fail(error: NetworkError.invalidURL)
                     .eraseToAnyPublisher()
