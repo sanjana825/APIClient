@@ -25,6 +25,8 @@ public class APIService{
                 .map(\.data)
                 .decode(type: decodingType, decoder: JSONDecoder())
                 .mapError { _ in NetworkError.decodingFailed }
+                .timeout(.seconds(12), scheduler: DispatchQueue.global(), customError: { NetworkError.timeout })
+                .mapError { _ in NetworkError.requestFailed }
                 .eraseToAnyPublisher()
     }
 }
